@@ -1,11 +1,11 @@
-import random
+import random    #This line imports the Python random module
 
-def main():
+def main():      #This line defines the main() function
     length = 23
     array1 = [random.randint(1, 25) for _ in range(length)]
     array2 = [random.randint(1, 25) for _ in range(length)]
 
-    for i in range(length):
+    for i in range(length):    #This section of code sorts array1 in descending order and ensures that array2 is sorted in the same way to maintain the correspondence between values in both arrays. It does this by finding the maximum value in array1 from the current position i to the end and swapping elements accordingly
         max_val = 0
         index = 0
         for j in range(i, length):
@@ -15,15 +15,15 @@ def main():
         array1[i], array1[index] = array1[index], array1[i]
         array2[i], array2[index] = array2[index], array2[i]
 
-    print("X sorted:", array1)
+    print("X sorted:", array1)  #These lines print the sorted arrays array1 and array2 to the console.
     print("Y sorted:", array2)
 
-    optx = [0] * length
+    optx = [0] * length  #Two arrays optx and opty are initialized with zeros
     opty = [0] * length
 
-    optx[0] = array1[0]
+    optx[0] = array1[0]   #The code initializes optx[0] and opty[0] with the first elements of array1 and array2
     opty[0] = array2[0]
-    maxx = array1[0]
+    maxx = array1[0]      #It maintains maxx and maxy to keep track of the maximum values encountered in array1 and array2
     maxy = array2[0]
 
     for m in range(1, length):
