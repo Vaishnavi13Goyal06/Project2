@@ -1,0 +1,39 @@
+import random
+
+def main():
+    length = 23
+    array1 = [random.randint(1, 25) for _ in range(length)]
+    array2 = [random.randint(1, 25) for _ in range(length)]
+
+    for i in range(length):
+        max_val = 0
+        index = 0
+        for j in range(i, length):
+            if array1[j] > max_val:
+                max_val = array1[j]
+                index = j
+        array1[i], array1[index] = array1[index], array1[i]
+        array2[i], array2[index] = array2[index], array2[i]
+
+    print("X sorted:", array1)
+    print("Y sorted:", array2)
+
+    optx = [0] * length
+    opty = [0] * length
+
+    optx[0] = array1[0]
+    opty[0] = array2[0]
+    maxx = array1[0]
+    maxy = array2[0]
+
+    for m in range(1, length):
+        if array2[m] > maxy:
+            maxy = array2[m]
+            optx[m] = array1[m]
+            opty[m] = array2[m]
+
+    print("OptX:", [x for x in optx if x != 0])
+    print("OptY:", [y for y in opty if y != 0])
+
+if _name_ == "_main_":
+    main()
